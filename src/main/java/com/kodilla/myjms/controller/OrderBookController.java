@@ -20,7 +20,7 @@ public class OrderBookController {
     @GetMapping(path = "/order")
     public String processOrder(@RequestParam String buyer, @RequestParam String isbn, @RequestParam Integer quantity) {
         BookOrderDto order = new BookOrderDto(buyer, isbn, quantity);
-        jmsTemplate.convertAndSend("queue-order", (Map<String, Object>) order.mapToJms());
+        jmsTemplate.convertAndSend( "queue-order", order);
 
         System.out.println(order);
         return order.toString();

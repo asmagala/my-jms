@@ -1,9 +1,8 @@
 package com.kodilla.myjms.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.Serializable;
 
-public class BookOrderDto {
+public class BookOrderDto implements Serializable {
     private final String buyer;
     private final String isbn;
     private final Integer quantity;
@@ -31,11 +30,4 @@ public class BookOrderDto {
         return "Current order: \nbuyer = " + buyer + "\nisbn = " + isbn + "\nquantity = " + quantity.toString();
     }
 
-    public Map<String, Object> mapToJms() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("buyer", this.getBuyer());
-        map.put("isbn", this.getIsbn());
-        map.put("quantity", this.getQuantity());
-        return map;
-    }
 }
